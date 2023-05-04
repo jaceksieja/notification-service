@@ -23,12 +23,13 @@ services:
     volumes:
       - ./public:/srv/app/public:ro
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-
-###> symfony/mercure-bundle ###
-###< symfony/mercure-bundle ###
+  migrations:
+    build:
+      context: .
+      target: app_migrations_dev
 
 ###> doctrine/doctrine-bundle ###
   database:
     ports:
-      - "5432"
+      - "5432:5432"
 ###< doctrine/doctrine-bundle ###

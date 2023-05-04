@@ -12,6 +12,8 @@
         "doctrine/doctrine-bundle": "^2.9",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.15",
+        "dunglas/doctrine-json-odm": "*",
+        "sensio/framework-extra-bundle": "^6.2",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",
@@ -29,6 +31,8 @@
     },
     "autoload": {
         "psr-4": {
+            "App\\Tests\\": "tests/_support",
+            "App\\Tests\\Api\\": "tests/api",
             "App\\": "src/"
         }
     },
@@ -70,7 +74,13 @@
     },
     "require-dev": {
         "codeception/codeception": "^5.0",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-doctrine2": "^3.0",
+        "codeception/module-phpbrowser": "^3.0",
+        "codeception/module-rest": "^3.3",
+        "codeception/module-symfony": "^3.1",
         "friendsofphp/php-cs-fixer": "^3.16",
+        "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "^5.10"
     }
 }
