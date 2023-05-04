@@ -64,5 +64,10 @@
             "require": "6.2.*",
             "docker": true
         }
+    },
+    "require-dev": {
+        "codeception/codeception": "^5.0",
+        "friendsofphp/php-cs-fixer": "^3.16",
+        "vimeo/psalm": "^5.10"
     }
 }
