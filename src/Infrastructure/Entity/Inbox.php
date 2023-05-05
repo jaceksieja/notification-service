@@ -16,7 +16,7 @@ class Inbox
     #[ORM\Column(type: 'string', enumType: Type::class)]
     private Type $type;
     #[ORM\Column(type: 'json_document', options: ['jsonb' => true])]
-    private string $content;
+    private array $content;
 
     public function getId(): ?string
     {
@@ -33,12 +33,12 @@ class Inbox
         $this->type = $type;
     }
 
-    public function getContent(): string
+    public function getContent(): array
     {
         return $this->content;
     }
 
-    public function setContent(string $content): void
+    public function setContent(array $content): void
     {
         $this->content = $content;
     }

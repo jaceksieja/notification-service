@@ -2,13 +2,17 @@
 
 namespace App\Tests\Api\notifications;
 
-use App\Infrastructure\Entity\Inbox;
+use App\Infrastructure\Repository\DoctrineRepository;
 use App\Tests\ApiTester;
+use PHPUnit\Framework\Assert;
 
 class CreateCest
 {
+    private DoctrineRepository $inboxRepository;
+
     public function _before(ApiTester $I): void
     {
+        $this->inboxRepository = $I->grabService('inbox.doctrine.repository');
     }
 
     public function canRegisterNotification(ApiTester $I): void
@@ -16,6 +20,8 @@ class CreateCest
         $I->sendPost('/notifications', []);
         $I->canSeeResponseCodeIs(201);
         $I->seeResponseIsValidOnJsonSchema(__DIR__.'/response_schemas/register_notification_success.json');
-        $I->canSeeInRepository(Inbox::class, []);
+
+        $inbox = $this->inboxRepository->findOneBy([]);
+        Assert::assertNotNull($inbox);
     }
 }

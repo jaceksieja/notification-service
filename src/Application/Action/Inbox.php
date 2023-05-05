@@ -13,7 +13,7 @@ readonly class Inbox
     ) {
     }
 
-    public function __invoke(Type $type, string $content): InboxRecord
+    public function __invoke(Type $type, array $content): InboxRecord
     {
         $inbox = new InboxRecord();
         $inbox->setType($type);

@@ -19,7 +19,7 @@ readonly class NotificationController
     }
 
     #[Route('/notifications', name: 'register_notification', methods: ['POST'])]
-    public function __invoke(RegisterNotificationDTO $createNotificationDTO): Response
+    public function __invoke(RegisterNotificationDTO $createNotificationDTO): JsonResponse
     {
         try {
             $id = ($this->inbox)(Type::from('notification'), $createNotificationDTO->getContent());
