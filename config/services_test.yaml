@@ -1,0 +1,8 @@
+services:
+    App\Infrastructure\Integration\AWS\SES\SendEmail:
+        class: App\Tests\Mock\AWS\SES\SendEmail
+    App\Infrastructure\Integration\Pushy\SendPush:
+        class: App\Tests\Mock\Pushy\SendPush
+    App\Infrastructure\Integration\Twilio\SMS\SendSMS:
+        class: App\Tests\Mock\Twilio\SMS\SendSMS
+        

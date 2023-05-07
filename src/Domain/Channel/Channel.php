@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Channel;
+namespace App\Domain\Channel;
 
 enum Channel: string
 {

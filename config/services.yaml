@@ -59,3 +59,21 @@ services:
             - '@outbox.doctrine.repository'
 
     App\Domain\Repository\OutboxRepositoryInterface: '@App\Infrastructure\Repository\OutboxRepository'
+        
+    App\Application\Channel\Provider\Email\EmailProvider:
+        arguments:
+            - '@App\Infrastructure\Integration\AWS\SES\SendEmail'
+
+    App\Application\Channel\Provider\Push\PushProvider:
+        arguments:
+            - '@App\Infrastructure\Integration\Pushy\SendPush'
+
+    App\Application\Channel\Provider\SMS\SMSProvider:
+        arguments:
+            - '@App\Infrastructure\Integration\Twilio\SMS\SendSMS'
+
+    App\Application\Channel\Provider\ProviderResolver:
+        arguments:
+            - '@App\Application\Channel\Provider\Email\EmailProvider'
+            - '@App\Application\Channel\Provider\Push\PushProvider'
+            - '@App\Application\Channel\Provider\SMS\SMSProvider'

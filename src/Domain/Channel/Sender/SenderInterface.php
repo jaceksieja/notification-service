@@ -2,7 +2,7 @@
 
 namespace App\Domain\Channel\Sender;
 
-use App\Application\Channel\Channel;
+use App\Domain\Channel\Channel;
 use App\Domain\Model\NotificationInterface;
 
 interface SenderInterface

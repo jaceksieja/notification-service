@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Entity;
 
-use App\Application\Channel\Channel;
+use App\Domain\Channel\Channel;
 use App\Domain\Model\NotificationInterface;
 use App\Infrastructure\Repository\OutboxRepository;
 use Doctrine\ORM\Mapping as ORM;

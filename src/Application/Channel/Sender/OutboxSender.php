@@ -2,8 +2,8 @@
 
 namespace App\Application\Channel\Sender;
 
-use App\Application\Channel\Channel;
 use App\Application\Repository\OutboxRepositoryInterface;
+use App\Domain\Channel\Channel;
 use App\Domain\Channel\Sender\SenderInterface;
 use App\Domain\Model\NotificationInterface;
 use App\Infrastructure\Entity\Outbox;

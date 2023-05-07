@@ -2,7 +2,7 @@
 
 namespace App\Application\Channel\Resolver;
 
-use App\Application\Channel\Channel;
+use App\Domain\Channel\Channel;
 use App\Domain\Channel\Resolver\ChannelsResolverInterface;
 use App\Domain\Model\NotificationInterface;
 
