@@ -2,8 +2,8 @@
 
 namespace App\Application\Finder;
 
+use App\Application\Model\InboxInterface;
 use App\Application\Repository\InboxRepositoryInterface;
-use App\Infrastructure\Entity\Inbox;
 
 readonly class GetFirstConsumeStrategy implements InboxToConsumeStrategyInterface
 {
@@ -12,7 +12,7 @@ readonly class GetFirstConsumeStrategy implements InboxToConsumeStrategyInterfac
     ) {
     }
 
-    public function find(): ?Inbox
+    public function find(): ?InboxInterface
     {
         return $this->inboxRepository->findOne();
     }

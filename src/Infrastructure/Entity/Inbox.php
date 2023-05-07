@@ -19,6 +19,17 @@ class Inbox implements InboxInterface
     private Channel $channel;
     #[ORM\Column(type: 'string')]
     private string $userIdentifier;
+    #[ORM\Column(type: 'datetime')]
+    private \DateTimeInterface $createdAt;
+    #[ORM\Column(type: 'boolean')]
+    private bool $processed = false;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $processedAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?string
     {
@@ -43,5 +54,41 @@ class Inbox implements InboxInterface
     public function setUserIdentifier(string $userIdentifier): void
     {
         $this->userIdentifier = $userIdentifier;
+    }
+
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function isProcessed(): bool
+    {
+        return $this->processed;
+    }
+
+    public function setProcessed(bool $processed): void
+    {
+        $this->processed = $processed;
+    }
+
+    public function getProcessedAt(): ?\DateTimeInterface
+    {
+        return $this->processedAt;
+    }
+
+    public function setProcessedAt(?\DateTimeInterface $processedAt): void
+    {
+        $this->processedAt = $processedAt;
+    }
+
+    public function processed(): void
+    {
+        $this->processed = true;
+        $this->processedAt = new \DateTimeImmutable();
     }
 }

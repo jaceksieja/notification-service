@@ -28,5 +28,6 @@ readonly class ProcessNotification
         foreach ($channels as $channel) {
             $this->sender->send($channel, $notification);
         }
+        $notification->processed();
     }
 }

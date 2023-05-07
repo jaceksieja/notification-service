@@ -23,5 +23,6 @@ readonly class InboxToNotification
         }
 
         ($this->createNotification)($inbox->getChannel(), $inbox->getUserIdentifier());
+        $inbox->processed();
     }
 }

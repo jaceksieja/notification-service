@@ -2,8 +2,8 @@
 
 namespace App\Infrastructure\Repository;
 
+use App\Application\Model\InboxInterface;
 use App\Application\Repository\InboxRepositoryInterface;
-use App\Infrastructure\Entity\Inbox;
 
 readonly class InboxRepository implements InboxRepositoryInterface
 {
@@ -12,15 +12,15 @@ readonly class InboxRepository implements InboxRepositoryInterface
     ) {
     }
 
-    public function save(Inbox $inbox): Inbox
+    public function save(InboxInterface $inbox): InboxInterface
     {
         $this->doctrineRepository->getEntityManager()->persist($inbox);
 
         return $inbox;
     }
 
-    public function findOne(): ?Inbox
+    public function findOne(): ?InboxInterface
     {
-        return $this->doctrineRepository->findOneBy([]);
+        return $this->doctrineRepository->findOneBy(['processed' => false]);
     }
 }

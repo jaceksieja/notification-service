@@ -2,11 +2,11 @@
 
 namespace App\Application\Repository;
 
-use App\Infrastructure\Entity\Outbox;
+use App\Application\Model\OutboxInterface;
 
 interface OutboxRepositoryInterface
 {
-    public function save(Outbox $outbox): Outbox;
+    public function save(OutboxInterface $outbox): OutboxInterface;
 
-    public function findOne(): ?Outbox;
+    public function findOne(): ?OutboxInterface;
 }

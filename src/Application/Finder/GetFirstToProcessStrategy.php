@@ -2,8 +2,8 @@
 
 namespace App\Application\Finder;
 
+use App\Application\Model\OutboxInterface;
 use App\Application\Repository\OutboxRepositoryInterface;
-use App\Infrastructure\Entity\Outbox;
 
 readonly class GetFirstToProcessStrategy implements OutboxToProcessStrategyInterface
 {
@@ -12,7 +12,7 @@ readonly class GetFirstToProcessStrategy implements OutboxToProcessStrategyInter
     ) {
     }
 
-    public function find(): ?Outbox
+    public function find(): ?OutboxInterface
     {
         return $this->outboxRepository->findOne();
     }

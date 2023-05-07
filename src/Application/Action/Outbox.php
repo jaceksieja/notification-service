@@ -28,5 +28,6 @@ readonly class Outbox
                 $outbox->getNotification()
             );
         }
+        $outbox->processed();
     }
 }

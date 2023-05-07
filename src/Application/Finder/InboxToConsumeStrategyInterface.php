@@ -2,9 +2,9 @@
 
 namespace App\Application\Finder;
 
-use App\Infrastructure\Entity\Inbox;
+use App\Application\Model\InboxInterface;
 
 interface InboxToConsumeStrategyInterface
 {
-    public function find(): ?Inbox;
+    public function find(): ?InboxInterface;
 }

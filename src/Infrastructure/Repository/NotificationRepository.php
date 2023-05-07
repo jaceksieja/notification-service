@@ -21,6 +21,6 @@ readonly class NotificationRepository implements NotificationRepositoryInterface
 
     public function findOne(): ?NotificationInterface
     {
-        return $this->doctrineRepository->findOneBy([]);
+        return $this->doctrineRepository->findOneBy(['processed' => false]);
     }
 }

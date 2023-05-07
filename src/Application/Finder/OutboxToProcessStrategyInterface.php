@@ -2,9 +2,9 @@
 
 namespace App\Application\Finder;
 
-use App\Infrastructure\Entity\Outbox;
+use App\Application\Model\OutboxInterface;
 
 interface OutboxToProcessStrategyInterface
 {
-    public function find(): ?Outbox;
+    public function find(): ?OutboxInterface;
 }

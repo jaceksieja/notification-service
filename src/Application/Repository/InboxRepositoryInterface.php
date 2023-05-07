@@ -2,11 +2,11 @@
 
 namespace App\Application\Repository;
 
-use App\Infrastructure\Entity\Inbox;
+use App\Application\Model\InboxInterface;
 
 interface InboxRepositoryInterface
 {
-    public function save(Inbox $inbox): Inbox;
+    public function save(InboxInterface $inbox): InboxInterface;
 
-    public function findOne(): ?Inbox;
+    public function findOne(): ?InboxInterface;
 }

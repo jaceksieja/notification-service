@@ -11,4 +11,6 @@ interface NotificationInterface
     public function getChannel(): Channel;
 
     public function getUserIdentifier(): string;
+
+    public function processed(): void;
 }

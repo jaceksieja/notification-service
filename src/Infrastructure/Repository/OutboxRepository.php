@@ -2,8 +2,8 @@
 
 namespace App\Infrastructure\Repository;
 
+use App\Application\Model\OutboxInterface;
 use App\Application\Repository\OutboxRepositoryInterface;
-use App\Infrastructure\Entity\Outbox;
 
 readonly class OutboxRepository implements OutboxRepositoryInterface
 {
@@ -12,15 +12,15 @@ readonly class OutboxRepository implements OutboxRepositoryInterface
     ) {
     }
 
-    public function save(Outbox $outbox): Outbox
+    public function save(OutboxInterface $outbox): OutboxInterface
     {
         $this->doctrineRepository->getEntityManager()->persist($outbox);
 
         return $outbox;
     }
 
-    public function findOne(): ?Outbox
+    public function findOne(): ?OutboxInterface
     {
-        return $this->doctrineRepository->findOneBy([]);
+        return $this->doctrineRepository->findOneBy(['processed' => false]);
     }
 }
