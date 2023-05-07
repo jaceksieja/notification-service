@@ -4,6 +4,7 @@ namespace App\Tests\integration\Domain\Action;
 
 use App\Domain\Action\CreateNotification;
 use App\Domain\Action\ProcessNotification;
+use App\Domain\Channel\Channel;
 use App\Infrastructure\Repository\DoctrineRepository;
 use App\Tests\IntegrationTester;
 use Codeception\Test\Unit;
@@ -26,7 +27,7 @@ class ProcessNotificationTest extends Unit
     public function testTransformNotificationToOutbox(): void
     {
         // Given
-        ($this->createNotification)();
+        ($this->createNotification)(Channel::from('email'), 'eeb4ef91-1ac0-4d4c-98f8-24ac33832c39');
         $this->outboxRepository->getEntityManager()->flush();
         // When
         ($this->processNotification)();

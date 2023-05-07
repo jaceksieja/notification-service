@@ -77,3 +77,13 @@ services:
             - '@App\Application\Channel\Provider\Email\EmailProvider'
             - '@App\Application\Channel\Provider\Push\PushProvider'
             - '@App\Application\Channel\Provider\SMS\SMSProvider'
+
+    App\Infrastructure\Integration\Twilio\SMS\SendSMS:
+        arguments:
+            $accountSID: '%env(string:TWILIO_ACCOUNT_SID)%'
+            $tokenAuth: '%env(string:TWILIO_TOKEN_AUTH)%'
+            $senderPhoneNumber: '%env(string:TWILIO_SENDER_PHONE_NUMBER)%'
+
+    App\Domain\Channel\Builder\ContentBuilder:
+        arguments:
+            - '@App\Domain\Channel\Builder\SMSContentBuilder'

@@ -3,8 +3,8 @@
 namespace App\Tests\integration\Application\Action;
 
 use App\Application\Action\InboxToNotification;
+use App\Domain\Channel\Channel;
 use App\Infrastructure\Entity\Inbox;
-use App\Infrastructure\Entity\Type;
 use App\Infrastructure\Repository\DoctrineRepository;
 use App\Tests\IntegrationTester;
 use Codeception\Test\Unit;
@@ -26,8 +26,8 @@ class InboxToNotificationTest extends Unit
     {
         // Given
         $inbox = new Inbox();
-        $inbox->setType(Type::NOTIFICATION);
-        $inbox->setContent([]);
+        $inbox->setChannel(Channel::from('sms'));
+        $inbox->setUserIdentifier('eeb4ef91-1ac0-4d4c-98f8-24ac33832c39');
         $this->tester->haveInRepository($inbox);
 
         // When

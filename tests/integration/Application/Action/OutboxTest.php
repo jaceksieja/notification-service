@@ -5,6 +5,7 @@ namespace App\Tests\integration\Application\Action;
 use App\Application\Action\Outbox;
 use App\Domain\Action\CreateNotification;
 use App\Domain\Action\ProcessNotification;
+use App\Domain\Channel\Channel;
 use App\Infrastructure\Repository\DoctrineRepository;
 use App\Tests\IntegrationTester;
 use App\Tests\Mock\AWS\SES\SendEmail;
@@ -38,7 +39,7 @@ class OutboxTest extends Unit
     public function testSendNotificationWithProvider(): void
     {
         // Given
-        ($this->createNotification)();
+        ($this->createNotification)(Channel::from('email'), 'eeb4ef91-1ac0-4d4c-98f8-24ac33832c39');
         $this->outboxRepository->getEntityManager()->flush();
         ($this->processNotification)();
         $this->outboxRepository->getEntityManager()->flush();

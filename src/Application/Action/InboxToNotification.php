@@ -15,8 +15,13 @@ readonly class InboxToNotification
 
     public function __invoke(): void
     {
-        $inboxRecord = $this->inboxToConsumeStrategy->find();
+        $inbox = $this->inboxToConsumeStrategy->find();
 
-        ($this->createNotification)();
+        if (null === $inbox) {
+            // @todo logging
+            return;
+        }
+
+        ($this->createNotification)($inbox->getChannel(), $inbox->getUserIdentifier());
     }
 }

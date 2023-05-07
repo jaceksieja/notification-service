@@ -26,7 +26,7 @@ class ProcessNotificationCommand extends Command
         try {
             ($this->processNotification)();
             $this->entityManager->flush();
-        } catch (\Throwable) {
+        } catch (\Throwable $throwable) {
             return Command::FAILURE;
         }
 

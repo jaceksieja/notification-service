@@ -15,27 +15,13 @@ class Outbox
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?string $id = null;
-    #[ORM\Column(type: 'string', enumType: Type::class)]
-    private Type $type;
     #[ORM\ManyToOne(targetEntity: Notification::class)]
     #[ORM\JoinColumn(name: 'notification_id', referencedColumnName: 'id')]
     private NotificationInterface $notification;
-    #[ORM\Column(type: 'string', enumType: Channel::class)]
-    private Channel $channel;
 
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getType(): Type
-    {
-        return $this->type;
-    }
-
-    public function setType(Type $type): void
-    {
-        $this->type = $type;
     }
 
     public function getNotification(): NotificationInterface
@@ -50,11 +36,6 @@ class Outbox
 
     public function getChannel(): Channel
     {
-        return $this->channel;
-    }
-
-    public function setChannel(Channel $channel): void
-    {
-        $this->channel = $channel;
+        return $this->getNotification()->getChannel();
     }
 }

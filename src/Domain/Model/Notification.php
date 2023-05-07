@@ -2,7 +2,7 @@
 
 namespace App\Domain\Model;
 
-class Notification implements NotificationInterface
+abstract class Notification implements NotificationInterface
 {
     public function getId(): ?string
     {
