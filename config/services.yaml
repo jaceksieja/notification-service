@@ -87,3 +87,7 @@ services:
     App\Domain\Channel\Builder\ContentBuilder:
         arguments:
             - '@App\Domain\Channel\Builder\SMSContentBuilder'
+
+    App\Domain\Channel\Resolver\ChannelsResolver:
+        arguments:
+            $enabledChannels: '%env(json:ENABLED_CHANNELS)%'

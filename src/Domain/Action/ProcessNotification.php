@@ -10,7 +10,7 @@ readonly class ProcessNotification
 {
     public function __construct(
         private PickNotificationStrategyInterface $pickNotificationStrategy,
-        private ChannelsResolverInterface $channelsResolver,
+        private ChannelsResolverInterface $channelResolver,
         private SenderInterface $sender
     ) {
     }
@@ -20,14 +20,19 @@ readonly class ProcessNotification
         $notification = $this->pickNotificationStrategy->pick();
 
         if (null === $notification) {
+            // @todo logging
             return;
         }
 
-        $channels = $this->channelsResolver->resolve($notification);
+        $channel = $this->channelResolver->resolve($notification);
 
-        foreach ($channels as $channel) {
-            $this->sender->send($channel, $notification);
+        if (null === $channel) {
+            // @todo logging
+            return;
         }
+
+        $this->sender->send($channel, $notification);
+
         $notification->processed();
     }
 }

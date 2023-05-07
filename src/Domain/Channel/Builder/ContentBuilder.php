@@ -7,17 +7,17 @@ use App\Domain\Model\NotificationInterface;
 
 class ContentBuilder
 {
-    private array $builder;
+    private array $builders;
 
     public function __construct(
-        ContentBuilderInterface ...$builder
+        ContentBuilderInterface ...$builders
     ) {
-        $this->builder = $builder;
+        $this->builders = $builders;
     }
 
     public function build(NotificationInterface $notification, Channel $channel): ?string
     {
-        foreach ($this->builder as $builder) {
+        foreach ($this->builders as $builder) {
             if ($builder->supports($channel)) {
                 return $builder->build($notification);
             }
