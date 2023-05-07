@@ -18,4 +18,9 @@ readonly class NotificationRepository implements NotificationRepositoryInterface
 
         return $notification;
     }
+
+    public function findOne(): ?NotificationInterface
+    {
+        return $this->doctrineRepository->findOneBy([]);
+    }
 }

@@ -7,4 +7,6 @@ use App\Domain\Model\NotificationInterface;
 interface NotificationRepositoryInterface
 {
     public function save(NotificationInterface $notification): NotificationInterface;
+
+    public function findOne(): ?NotificationInterface;
 }

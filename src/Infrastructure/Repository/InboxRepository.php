@@ -2,9 +2,10 @@
 
 namespace App\Infrastructure\Repository;
 
+use App\Application\Repository\InboxRepositoryInterface;
 use App\Infrastructure\Entity\Inbox;
 
-readonly class InboxRepository
+readonly class InboxRepository implements InboxRepositoryInterface
 {
     public function __construct(
         private DoctrineRepository $doctrineRepository

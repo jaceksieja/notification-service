@@ -22,8 +22,7 @@ class InboxToNotificationTest extends Unit
         $this->notificationRepository = $this->tester->grabService('notification.doctrine.repository');
     }
 
-    // tests
-    public function testSomeFeature(): void
+    public function testTransformInboxToNotification(): void
     {
         // Given
         $inbox = new Inbox();

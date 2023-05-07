@@ -2,14 +2,14 @@
 
 namespace App\Application\Action;
 
+use App\Application\Repository\InboxRepositoryInterface;
 use App\Infrastructure\Entity\Inbox as InboxRecord;
 use App\Infrastructure\Entity\Type;
-use App\Infrastructure\Repository\InboxRepository;
 
 readonly class Inbox
 {
     public function __construct(
-        private InboxRepository $inboxRepository
+        private InboxRepositoryInterface $inboxRepository
     ) {
     }
 

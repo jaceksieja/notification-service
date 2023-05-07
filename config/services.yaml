@@ -12,8 +12,10 @@ services:
             - '../src/Application/Model/'
             - '../src/Application/Entity/'
 
-    App\Domain\Action\:
-        resource: '../src/Domain/Action/'
+    App\Domain\:
+        resource: '../src/Domain/'
+        exclude:
+            - '../src/Domain/Model/'
 
     App\Infrastructure\Controller\:
         resource: '../src/Infrastructure/Controller/'
@@ -34,6 +36,12 @@ services:
             - '@Doctrine\Common\Persistence\ManagerRegistry'
             - App\Infrastructure\Entity\Notification
 
+    outbox.doctrine.repository:
+        class: App\Infrastructure\Repository\DoctrineRepository
+        arguments:
+            - '@Doctrine\Common\Persistence\ManagerRegistry'
+            - App\Infrastructure\Entity\Outbox
+
     App\Infrastructure\Repository\InboxRepository:
         arguments:
             - '@inbox.doctrine.repository'
@@ -45,3 +53,9 @@ services:
             - '@notification.doctrine.repository'
 
     App\Domain\Repository\NotificationRepositoryInterface: '@App\Infrastructure\Repository\NotificationRepository'
+    
+    App\Infrastructure\Repository\OutboxRepository:
+        arguments:
+            - '@outbox.doctrine.repository'
+
+    App\Domain\Repository\OutboxRepositoryInterface: '@App\Infrastructure\Repository\OutboxRepository'
