@@ -9,7 +9,7 @@ class SMSContentBuilder implements ContentBuilderInterface
 {
     public function supports(Channel $channel): bool
     {
-        return $channel === Channel::SMS;
+        return Channel::SMS === $channel;
     }
 
     public function build(NotificationInterface $notification): string
