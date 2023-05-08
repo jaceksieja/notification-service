@@ -91,3 +91,7 @@ services:
     App\Domain\Channel\Resolver\ChannelsResolver:
         arguments:
             $enabledChannels: '%env(json:ENABLED_CHANNELS)%'
+
+    App\Infrastructure\Integration\AuthService\Auth:
+        arguments:
+            $userPhoneNumber: '%env(string:TEST_USER_PHONE_NUMBER)%'
