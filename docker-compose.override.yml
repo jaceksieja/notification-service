@@ -27,6 +27,10 @@ services:
     build:
       context: .
       target: app_migrations_dev
+  cron:
+    build:
+      context: .
+      target: app_cron_dev
 
 ###> doctrine/doctrine-bundle ###
   database:

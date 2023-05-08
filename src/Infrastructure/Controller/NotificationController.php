@@ -30,7 +30,7 @@ readonly class NotificationController
             }
             $this->entityManager->flush();
 
-            return new JsonResponse(['ids' => $ids], Response::HTTP_CREATED);
+            return new JsonResponse(['ids' => $ids], Response::HTTP_ACCEPTED);
         } catch (\Throwable) {
             return new JsonResponse([], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
