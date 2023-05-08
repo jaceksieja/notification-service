@@ -21,10 +21,6 @@ class ResolverTest extends Unit
         yield [['sms', 'email'], Channel::from('push'), false];
     }
 
-    protected function _before()
-    {
-    }
-
     /**
      * @dataProvider cases
      */

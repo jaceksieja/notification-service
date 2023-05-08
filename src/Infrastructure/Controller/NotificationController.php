@@ -24,6 +24,7 @@ readonly class NotificationController
             $ids = [];
             foreach ($data->getChannels() as $channel) {
                 $ids[] = ($this->inbox)(
+                    $data->getType(),
                     $channel,
                     $data->getUserIdentifier(),
                 )->getId();

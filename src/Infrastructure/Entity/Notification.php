@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Entity;
 
 use App\Domain\Channel\Channel;
+use App\Domain\Notification\Type;
 use App\Infrastructure\Repository\NotificationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,6 +15,8 @@ class Notification extends \App\Domain\Model\Notification
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?string $id = null;
+    #[ORM\Column(type: 'string', enumType: Type::class)]
+    private Type $type;
     #[ORM\Column(type: 'string', enumType: Channel::class)]
     private Channel $channel;
     #[ORM\Column(type: 'string')]
@@ -33,6 +36,16 @@ class Notification extends \App\Domain\Model\Notification
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function getType(): Type
+    {
+        return $this->type;
+    }
+
+    public function setType(Type $type): void
+    {
+        $this->type = $type;
     }
 
     public function getChannel(): Channel

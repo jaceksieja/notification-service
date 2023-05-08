@@ -18,7 +18,7 @@ class EmailProvider implements ProviderInterface
 
     public function supports(Channel $channel): bool
     {
-        return Channel::from('email') === $channel;
+        return Channel::EMAIL === $channel;
     }
 
     public function send(NotificationInterface $notification): bool

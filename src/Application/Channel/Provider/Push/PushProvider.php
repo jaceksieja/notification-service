@@ -18,7 +18,7 @@ class PushProvider implements ProviderInterface
 
     public function supports(Channel $channel): bool
     {
-        return Channel::from('push') === $channel;
+        return Channel::PUSH === $channel;
     }
 
     public function send(NotificationInterface $notification): bool

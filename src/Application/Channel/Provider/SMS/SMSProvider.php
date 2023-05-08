@@ -18,7 +18,7 @@ class SMSProvider implements ProviderInterface
 
     public function supports(Channel $channel): bool
     {
-        return Channel::from('sms') === $channel;
+        return Channel::SMS === $channel;
     }
 
     public function send(NotificationInterface $notification): bool

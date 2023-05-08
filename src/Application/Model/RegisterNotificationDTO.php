@@ -3,16 +3,23 @@
 namespace App\Application\Model;
 
 use App\Domain\Channel\Channel;
+use App\Domain\Notification\Type;
 
-class RegisterNotificationDTO
+readonly class RegisterNotificationDTO
 {
     /**
      * @param iterable<Channel> $channels
      */
     public function __construct(
+        private Type $type,
         private iterable $channels,
         private string $userIdentifier
     ) {
+    }
+
+    public function getType(): Type
+    {
+        return $this->type;
     }
 
     public function getChannels(): iterable
@@ -20,23 +27,8 @@ class RegisterNotificationDTO
         return $this->channels;
     }
 
-    public function setChannels(iterable $channels): void
-    {
-        $this->channels = $channels;
-    }
-
     public function getUserIdentifier(): string
     {
         return $this->userIdentifier;
-    }
-
-    public function setUserIdentifier(string $userIdentifier): void
-    {
-        $this->userIdentifier = $userIdentifier;
-    }
-
-    public function getContent(): array
-    {
-        return [];
     }
 }

@@ -45,7 +45,7 @@ readonly class SendSMS implements SMSProviderInterface
 
     private function doSend(NotificationInterface $notification): void
     {
-        $message = $this->contentBuilder->build($notification, Channel::from('sms'));
+        $message = $this->contentBuilder->build($notification, Channel::SMS);
 
         if (null === $message) {
             // @todo logging

@@ -5,4 +5,7 @@ services:
         class: App\Tests\Mock\Pushy\SendPush
     App\Infrastructure\Integration\Twilio\SMS\SendSMS:
         class: App\Tests\Mock\Twilio\SMS\SendSMS
-        
+    App\Domain\Channel\Builder\ContentBuilder:
+        public: true
+        arguments:
+            - '@App\Domain\Channel\Builder\SMSContentBuilder'

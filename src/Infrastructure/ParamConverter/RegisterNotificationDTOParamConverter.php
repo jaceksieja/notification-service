@@ -4,6 +4,7 @@ namespace App\Infrastructure\ParamConverter;
 
 use App\Application\Model\RegisterNotificationDTO;
 use App\Domain\Channel\Channel;
+use App\Domain\Notification\Type;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +23,7 @@ class RegisterNotificationDTOParamConverter implements ParamConverterInterface
         $request->attributes->set(
             $param,
             new RegisterNotificationDTO(
+                Type::from($request->request->get('type')),
                 $channels,
                 $request->request->get('userIdentifier'),
             )

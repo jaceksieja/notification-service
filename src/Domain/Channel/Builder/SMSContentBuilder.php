@@ -9,11 +9,12 @@ class SMSContentBuilder implements ContentBuilderInterface
 {
     public function supports(Channel $channel): bool
     {
-        return $channel === Channel::from('sms');
+        return $channel === Channel::SMS;
     }
 
     public function build(NotificationInterface $notification): string
     {
+        // can generate different content based on $notification->getType();
         return 'some example message build form notification';
     }
 }

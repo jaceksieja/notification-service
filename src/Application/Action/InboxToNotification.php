@@ -22,7 +22,11 @@ readonly class InboxToNotification
             return;
         }
 
-        ($this->createNotification)($inbox->getChannel(), $inbox->getUserIdentifier());
+        ($this->createNotification)(
+            $inbox->getType(),
+            $inbox->getChannel(),
+            $inbox->getUserIdentifier()
+        );
         $inbox->processed();
     }
 }

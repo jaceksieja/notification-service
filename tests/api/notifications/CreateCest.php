@@ -21,6 +21,7 @@ class CreateCest
     public function canRegisterNotification(ApiTester $I): void
     {
         $I->sendPost('/', [
+            'type' => 'example',
             'channels' => ['sms', 'email'],
             'userIdentifier' => 'eeb4ef91-1ac0-4d4c-98f8-24ac33832c39',
         ]);
